@@ -18,9 +18,9 @@ The Linux directory contains the main demo apps for embedded Linux systems:
 * RTIMULibDemo is a simple GUI app that displays the fused IMU data in real-time.
 * RTIMULibDemoGL adds OpenGL visualization to RTIMULibDemo.
 
-RTIMULib is a C++ library but there are also Python bindings in Linux/python. It's easy to build and install the Python RTIMULib library using the provided setup.py after which any Python script will have access to RTIMULib functionality. See Linux/python.README.md (https://github.com/richards-tech/RTIMULib2/blob/master/Linux/python/README.md) for more details. Two demo scripts show how to use the Python interface.
+RTIMULib is a C++ library but there are also Python bindings in Linux/python. It's easy to build and install the Python RTIMULib library using the provided setup.py after which any Python script will have access to RTIMULib functionality. See Linux/python/README.md (https://github.com/richards-tech/RTIMULib2/blob/master/Linux/python/README.md) for more details. Two demo scripts show how to use the Python interface, and there is a new python script to generate fuse pose data from logged IMU data.  This new post-processing script shows how to read in a csv file that logs the timestamp in milliseconds and the raw accel, gyro, and magnetometer data from the IMU. It loads it and the calibration settings ini file and uses that to generate out the fused pose data and saves that back to another csv file for analysis. A sample data file is included.
 
-Check out www.richards-tech.com for more details, updates and news.
+Check out www.richards-tech.com for more details, updates and news (note: this link resolves back to the upstream github org which appears dead).
 
 RTIMULib currently supports the following IMUs:
 
@@ -61,7 +61,7 @@ RTIMULib also supports multiple sensor integration fusion filters such as RTQF a
 
 Two types of platforms are supported:
 
-* Embedded Linux. RTIMULib is supported for the Raspberry Pi (Raspbian) and Intel Edison. Demo apps for these can be found in the Linux directory and instructions for building and running can be found there. Its prerequisites are very simple - just I2C support on the target system along with the standard build-essential (included in the Raspberry Pi Raspbian distribution by default).
+* Embedded Linux. RTIMULib is supported for the BeagleBone (debian), Raspberry Pi (Raspbian), and Intel Edison. Demo apps for these can be found in the Linux directory and instructions for building and running can be found there. Its prerequisites are very simple - just I2C support on the target system along with the standard build-essential (included in the Raspberry Pi Raspbian distribution by default).
 
 * Desktop (Ubuntu/Windows/Mac). There are two apps (RTHostIMU and RTHostIMUGL) that allow the sensor fusion to be separated from the sensor interfacing and data collection. An Arduino (running the RTArduLinkIMU sketch from the RTIMULib-Arduino repo) fitted with an IMU chip collects the sensor data and sends it to the desktop. RTHostIMU and RTHostIMUGL (this one has an OpenGL visualization of the data) communicate with the Arduino via a USB connection.
 
@@ -77,7 +77,7 @@ This is the actual RTIMULib library source. Custom apps only need to include thi
 
 ### Linux
 
-This directory contains the embedded Linux demo apps (for Raspberry Pi and Intel Edison) and also the Python interface to RTIMULib.
+This directory contains the embedded Linux demo apps (for BeagleBone/Raspberry Pi and Intel Edison) and also the Python interface to RTIMULib.  See Linux/README.md (https://github.com/VCTLabs/RTIMULib2/blob/master/Linux/README.md) for build and setup details.
 
 ### RTHost
 
