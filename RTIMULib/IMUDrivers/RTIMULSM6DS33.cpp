@@ -292,7 +292,7 @@ bool RTIMULSM6DS33::IMURead()
     if (!m_settings->HALRead(m_magSlaveAddr, LIS3MDL_STATUS_REG, 1, &cstatus, "Failed to read LIS3MDL status"))
         return false;
 
-    if ((status & 0x3) == 0 || (cstatus & 0x3) == 0)
+    if ((status & 0x3) == 0 && (cstatus & 0x3) == 0)
         return false;
 
     for (int i = 0; i<6; i++){
