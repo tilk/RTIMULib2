@@ -155,10 +155,10 @@ bool RTIMULSM6DS33::setAccelCTRL1()
     }
 
     switch (m_settings->m_LSM6DS33AccelFsr) {
-    case LSM6DS33_ACCEL_FSR_2G: m_accelScale = (RTFLOAT)0.000061; break;
-    case LSM6DS33_ACCEL_FSR_16G: m_accelScale = (RTFLOAT)0.000732; break;
-    case LSM6DS33_ACCEL_FSR_4G: m_accelScale = (RTFLOAT)0.000122; break;
-    case LSM6DS33_ACCEL_FSR_8G: m_accelScale = (RTFLOAT)0.000244; break;
+    case LSM6DS33_ACCEL_FSR_2G: m_accelScale = (RTFLOAT)2.0/0x8000; break;
+    case LSM6DS33_ACCEL_FSR_16G: m_accelScale = (RTFLOAT)16.0/0x8000; break;
+    case LSM6DS33_ACCEL_FSR_4G: m_accelScale = (RTFLOAT)4.0/0x8000; break;
+    case LSM6DS33_ACCEL_FSR_8G: m_accelScale = (RTFLOAT)8.0/0x8000; break;
     default:
         HAL_ERROR1("Illegal LSM6DS33 accel FSR code %d\n", m_settings->m_LSM6DS33AccelFsr);
         return false;
@@ -192,10 +192,10 @@ bool RTIMULSM6DS33::setGyroCTRL2()
     if (sr > m_sampleRate) m_sampleRate = sr;
 
     switch (m_settings->m_LSM6DS33GyroFsr) {
-    case LSM6DS33_GYRO_FSR_245: m_gyroScale = (RTFLOAT)0.008575 * RTMATH_DEGREE_TO_RAD; break;
-    case LSM6DS33_GYRO_FSR_500: m_gyroScale = (RTFLOAT)0.0175 * RTMATH_DEGREE_TO_RAD; break;
-    case LSM6DS33_GYRO_FSR_1000: m_gyroScale = (RTFLOAT)0.035 * RTMATH_DEGREE_TO_RAD; break;
-    case LSM6DS33_GYRO_FSR_2000: m_gyroScale = (RTFLOAT)0.07 * RTMATH_DEGREE_TO_RAD; break;
+    case LSM6DS33_GYRO_FSR_245: m_gyroScale = (RTFLOAT)245.0/0x8000 * RTMATH_DEGREE_TO_RAD; break;
+    case LSM6DS33_GYRO_FSR_500: m_gyroScale = (RTFLOAT)500.0/0x8000 * RTMATH_DEGREE_TO_RAD; break;
+    case LSM6DS33_GYRO_FSR_1000: m_gyroScale = (RTFLOAT)1000.0/0x8000 * RTMATH_DEGREE_TO_RAD; break;
+    case LSM6DS33_GYRO_FSR_2000: m_gyroScale = (RTFLOAT)2000.0/0x8000 * RTMATH_DEGREE_TO_RAD; break;
     default:
         HAL_ERROR1("Illegal LSM6DS33 gyro FSR code %d\n", m_settings->m_LSM6DS33GyroFsr);
         return false;
@@ -241,10 +241,10 @@ bool RTIMULSM6DS33::setCompassCTRL2()
         (m_settings->m_LIS3MDLCompassFsr << 5);
     
     switch (m_settings->m_LIS3MDLCompassFsr) {
-    case LIS3MDL_COMPASS_FSR_4: m_compassScale = (RTFLOAT)0.016; break;
-    case LIS3MDL_COMPASS_FSR_8: m_compassScale = (RTFLOAT)0.032; break;
-    case LIS3MDL_COMPASS_FSR_12: m_compassScale = (RTFLOAT)0.048; break;
-    case LIS3MDL_COMPASS_FSR_16: m_compassScale = (RTFLOAT)0.064; break;
+    case LIS3MDL_COMPASS_FSR_4: m_compassScale = (RTFLOAT)100*4.0/0x8000; break;
+    case LIS3MDL_COMPASS_FSR_8: m_compassScale = (RTFLOAT)100*8.0/0x8000; break;
+    case LIS3MDL_COMPASS_FSR_12: m_compassScale = (RTFLOAT)100*12.0/0x8000; break;
+    case LIS3MDL_COMPASS_FSR_16: m_compassScale = (RTFLOAT)100*16.0/0x8000; break;
     default:
         HAL_ERROR1("Illegal LIS3MDL compass FSR code %d\n", m_settings->m_LIS3MDLCompassFsr);
         return false;
