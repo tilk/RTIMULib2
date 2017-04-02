@@ -43,7 +43,7 @@
 #define RTIMU_TYPE_GD20HM303DLHC            8                   // STM L3GD20H/LSM303DHLC (new Adafruit IMU)
 #define RTIMU_TYPE_BMX055                   9                   // Bosch BMX055
 #define RTIMU_TYPE_BNO055                   10                  // Bosch BNO055
-#define RTIMU_TYPE_LSM6DS33                 11                  // STM LSM6DS33/LIS3MDL (Pololu MinIMU-9 v5)
+#define RTIMU_TYPE_LSM6DS33                 12                  // STM LSM6DS33/LIS3MDL (Pololu MinIMU-9 v5)
 
 //----------------------------------------------------------
 //
